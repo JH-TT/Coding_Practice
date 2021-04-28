@@ -2,6 +2,7 @@ n = int(input())
 
 num = []
 for _ in range(n):
+    # 입력받는 숫자들 양쪽에 0을 넣어서 인덱스가 입력받지 않은 숫자를 가리키면 0을 더하도록 한다.
     b = [0]
     b += list(map(int, input().split()))
     b += [0]
