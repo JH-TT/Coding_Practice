@@ -8,7 +8,7 @@ data = []
 for i in range(n):
     for j in range(n):
         if a[i][j] != 0:
-            data.append((a[i][j], 0, i, j)) # 바이러스의 데이터 입력.
+            data.append((a[i][j], 0, i, j)) # 바이러스의 데이터 입력.(바이러스 종류, 시작, 좌표)
 data.sort() # 낮은 번호부터니까 오름차순 정렬.
 q = deque(data) # 큐로 옮기기
 
