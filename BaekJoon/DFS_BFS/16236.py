@@ -30,7 +30,7 @@ def bfs(a, b, d):
                 continue
             # 그 외
             else:
-                # 그 위치에 물고기가 있고, 크기가 아기상어보다 작으면 fish에 위차값과 걸리는 시간 저장.
+                # 그 위치에 물고기가 있고, 크기가 아기상어보다 작으면 fish에 위치값과 걸리는 시간 저장.
                 # 크기가 같거나 0이면 fish에 저장안하고 그냥 지나감.
                 if 0 < sea[nx][ny] < shark:
                     fish.append((nx, ny, d + 1))
