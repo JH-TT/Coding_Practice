@@ -4,7 +4,7 @@ input = sys.stdin.readline
 m = float('inf')
 
 t = int(input())
-
+# 1
 for _ in range(t):
     k, n = map(int, input().split())
     a1 = []
@@ -33,3 +33,50 @@ for _ in range(t):
         elif abs(k - i - a2[idx - 1]) == abs(k - res):
             res = min(res, i + a2[idx - 1])
     print(res)
+
+# 2
+import sys
+input = sys.stdin.readline
+m = float('inf')
+
+t = int(input())
+
+for _ in range(t):
+    k, n = map(int, input().split())
+    a1 = []
+    a2 = []
+    res = []
+    arr1 = list(map(int, input().split()))
+    arr2 = list(map(int, input().split()))
+    
+    for i in range(n):
+        for j in range(n):
+            a1.append(arr1[i] + arr2[j])
+
+    arr1 = list(map(int, input().split()))
+    arr2 = list(map(int, input().split()))
+
+    for i in range(n):
+        for j in range(n):
+            a2.append(arr1[i] + arr2[j])
+    a1.sort()
+    a2.sort(reverse = True)
+
+    res = gap = m
+    f = s = 0
+    len = n * n
+    while f < len and s < len:
+        t = a1[f] + a2[s]
+
+        if abs(res - k) > abs(k - t):
+            res = t
+        elif abs(res - k) == abs(k - t):
+            res = min(res, t)
+        if t >= k:
+            s += 1
+        else:
+            f += 1
+    print(res)
+# 걸린 시간은 2번째가 더 빨랐다.
+# 아마도 탐색부분에서 차이가 난듯.
+# 1은 a1의 모든 요소를 뒤지지만, 2는 투포인터 개념으로 적절하게 하나씩 보니까 더 빨랐던거 같다.
