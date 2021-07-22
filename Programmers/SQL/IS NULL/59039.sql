@@ -1,0 +1,5 @@
+-- 코드를 입력하세요
+SELECT ANIMAL_ID FROM ANIMAL_INS
+WHERE NAME is NULL
+ORDER BY ANIMAL_ID
+-- 이름없는 동물의 아이디를 출력
