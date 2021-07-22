@@ -3,38 +3,27 @@ from collections import deque
 f, s, g, u, d = map(int, input().split())
 
 def bfs(s, cnt):
-    global a
     visit = [0] * (f + 1)
     q = deque()
     q.append((s, cnt))
+    visit[s] = 1
 
     while q:
-        s, cnt = q.popleft()
-        visit[s] = 1
+        s, cnt = q.popleft()        
 
         if s == g:
-            if cnt < a:
-                a = cnt
-            break
-        if s + u <= g: # g보다 작거나 같으면 append
+            return cnt
+        if 1 <= s + u <= f: # u버튼을 눌렀을 때 엘베가 움직일 수 있는 범위면 움직임.
             if not visit[s + u]:
                 q.append((s + u, cnt + 1))
-        elif s + u > g: # g보다 커지는 경우는 내려가는걸 선택.
-            if s - d >= 1:
-                if not visit[s - d]:
-                    q.append((s - d, cnt + 1))
-        elif s - d >= g: # u와 같은방식.
+                visit[s + u] = 1
+        if 1 <= s - d <= f: # d버튼을 눌렀을 때 마찬가지로 움직일 수 있는 범위면 움직임.
             if not visit[s - d]:
                 q.append((s - d, cnt + 1))
-        elif s - d < g:
-            if s + u <= f:
-                if not visit[s + u]:
-                    q.append((s + u, cnt + 1))
+                visit[s - d] = 1
 
-
-a = 1000000
-bfs(s, 0)
-if a == 1000000:
+a = bfs(s, 0)
+if a == None:
     print("use the stairs")
 else:
     print(a)
