@@ -12,7 +12,7 @@ for _ in range(m):
     graph[x].append(y)
     graph[y].append(x)
 
-for i in range(n):
+for i in range(n + 1):
     graph[i].sort()
 
 
