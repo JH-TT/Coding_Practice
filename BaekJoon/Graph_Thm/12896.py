@@ -1,4 +1,4 @@
-# 정답 코드.
+# 정답 코드. (스크루지 민호)
 import sys
 from collections import deque
 input = sys.stdin.readline
