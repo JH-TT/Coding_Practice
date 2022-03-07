@@ -42,19 +42,25 @@ for i in range(n):
         try:
             # "ㅜ" 만 되는 경우
             if i == 0:
-                s = poly[i][j] + poly[i+1][j] + poly[i][j-1] + poly[i][j+1]
-                ans = max(ans, s)
+                # 구석제외
+                if 0 < j < m:
+                    s = poly[i][j] + poly[i+1][j] + poly[i][j-1] + poly[i][j+1]
+                    ans = max(ans, s)
             # "ㅏ" 만 되는 경우
             elif j == 0:
-                s = poly[i][j] + poly[i+1][j] + poly[i-1][j] + poly[i][j+1]
-                ans = max(ans, s)
+                if 0 < i < n:
+                    s = poly[i][j] + poly[i+1][j] + poly[i-1][j] + poly[i][j+1]
+                    ans = max(ans, s)
             # "ㅗ" 만 되는 경우
             elif i == n - 1:
-                s = poly[i][j] + poly[i-1][j] + poly[i][j-1] + poly[i][j+1]
-                ans = max(ans, s)
+                if 0 < j < m:
+                    s = poly[i][j] + poly[i-1][j] + poly[i][j-1] + poly[i][j+1]
+                    ans = max(ans, s)
             # "ㅓ" 만 되는 경우
             elif j == m - 1:
-                s = poly[i][j] + poly[i+1][j] + poly[i][j-1] + poly[i-1][j]
+                if 0 < i < n:
+                    s = poly[i][j] + poly[i+1][j] + poly[i][j-1] + poly[i-1][j]
+                    ans = max(ans ,s)
             # "ㅗ, ㅏ, ㅜ, ㅓ 다 되는 경우"
             else:
                 s = poly[i][j] + poly[i+1][j] + poly[i][j-1] + poly[i][j+1] + poly[i-1][j]
@@ -65,3 +71,7 @@ for i in range(n):
             continue
 
 print(ans)
+
+# 수정내용
+# 테스트 케이스 추가로 실패뜸.
+# 다시 보니까 범위실수도 있었고, 하나 빠뜨린 부분도 있었음.
