@@ -25,7 +25,7 @@ post = list(map(int, input().split()))
 pre = [0] * (n + 1)
 
 # index함수를 쓸 바엔 미리 구해놓고 뽑아서 쓰자.
-# inorder에서 각 노드의 위치를 저장함
+# inorder에서 post의 끝 값 위치를 저장함
 for i in range(n):
     pre[inorder[i]] = i
 
