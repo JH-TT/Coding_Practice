@@ -1,3 +1,4 @@
+# 다익스트라
 import heapq
 
 n, k = map(int, input().split())
@@ -30,6 +31,34 @@ while q:
             distance[i[0]] = cost
             heapq.heappush(q, (cost, i[0]))
 print(distance[k])
+
+# bfs 더 빠름
+from collections import deque
+INF = 100001
+visit = [False] * INF
+dist = [-1] * INF
+
+n, k = map(int, input().split())
+q = deque()
+q.append(n)
+visit[n] = True
+dist[n] = 0
+
+while q:
+    now = q.popleft()
+    if now*2 < INF and visit[now*2] == False:
+        q.appendleft(now*2)
+        visit[now*2] = True
+        dist[now*2] = dist[now]
+    if now+1 < INF and visit[now+1] == False:
+        q.append(now+1)
+        visit[now+1] = True
+        dist[now+1] = dist[now]+1
+    if now-1 >= 0 and visit[now-1] == False:
+        q.append(now-1)
+        visit[now-1] = True
+        dist[now-1] = dist[now]+1
+print(dist[k])
 
 # 이 문제를 풀기위한 방법
 # 다익스트라(내 풀이)
