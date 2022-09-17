@@ -14,7 +14,7 @@ def solution(relation):
 
     # 1 ~ 칼럼 개수까지 뽑는 모든 경우를 구한다.
     for i in range(1, col + 1):
-        combi = sorted(list(map(list, combinations(list(range(col)), i))))
+        combi = list(map(list, combinations(list(range(col)), i)))
         # 후보키를 구한다.
         for j in combi:
             candidate = []
