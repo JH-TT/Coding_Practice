@@ -37,3 +37,21 @@ def solution(n, k):
         cnt += 1
 
     return answer
+
+# 다른 사람 코드
+from math import factorial
+def solution(n, k):
+    answer = []
+    nums = list(range(1, n+1))
+    order = []
+    k -= 1
+    for i in range(n-1, -1, -1):
+        temp = factorial(i)
+        q, r = divmod(k, temp)
+        k = r
+        order.append(q)
+    # print(order) 2 0 0 이런식으로 나오면 2번쨰 0번째 0번째 숫자를 pop한다고 보면 됨.
+    for idx in order:
+        answer.append(nums.pop(idx))
+
+    return answer
