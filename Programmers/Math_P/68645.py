@@ -55,3 +55,4 @@ def solution(n):
             board[row][col] = cnt
             cnt += 1
 # 로직은 나랑 비슷한데 이게 더 깔끔한듯
+# 마지막은 chain써서 합쳤음
