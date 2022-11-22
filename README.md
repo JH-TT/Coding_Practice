@@ -3,6 +3,7 @@
 |문제번호|알고리즘종류|다시풀이확인|  
 |:-:|:-:|:-:|
 |[1993](https://www.acmicpc.net/problem/1939)|그래프 탐색| :x: |
+|[1034](https://www.acmicpc.net/problem/1034)|애드 혹| :x: |
 
 
 
