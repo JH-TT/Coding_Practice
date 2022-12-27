@@ -31,3 +31,35 @@ for i in res[1:]:
     print(i)
 
 # 기본 위상정렬 + DP
+
+# 12-27일 다시 품.(2번만에 통과!)
+from collections import deque
+import sys
+input = sys.stdin.readline
+
+n = int(input())
+graph = [[] for _ in range(n+1)]
+ind = [0] * (n + 1)
+t = [0] * (n + 1)
+answer = [0] * (n + 1)
+for i in range(1, n+1):
+    cost, *a, _ = map(int, input().split())
+    for j in a:
+        ind[i] += 1
+        graph[j].append(i)
+    t[i] = cost
+
+q = deque()
+for i in range(1, n+1):
+    if ind[i] == 0:
+        q.append([t[i], i])
+while q:
+    time, node = q.popleft()
+    answer[node] = time
+    for next in graph[node]:
+        ind[next] -= 1
+        answer[next] = max(answer[next], time)
+        if ind[next] == 0:
+            q.append([answer[next] + t[next], next])
+
+print(*answer[1:], sep="\n")
