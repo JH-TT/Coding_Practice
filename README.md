@@ -6,8 +6,9 @@
 |:-:|:-:|:-:|
 |[1993](https://www.acmicpc.net/problem/1939)|그래프 탐색| :heavy_check_mark: |
 |[1034](https://www.acmicpc.net/problem/1034)|애드 혹| :heavy_check_mark: |
-|[1516](https://www.acmicpc.net/problem/1516)|DP, Graph_Thm| :heavy_check_mark: |
+|[1516](https://www.acmicpc.net/problem/1516)|DP, Graph-Thm| :heavy_check_mark: |
 |[9024](https://www.acmicpc.net/problem/9024)|Two_Pointer| :x: |
+|[1277](https://www.acmicpc.net/problem/1277)|Graph-Thm, Dijkstra| :x: |
 
 
 
