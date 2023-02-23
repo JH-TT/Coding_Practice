@@ -9,6 +9,7 @@
 |[1516](https://www.acmicpc.net/problem/1516)|DP, Graph-Thm| :heavy_check_mark: |
 |[9024](https://www.acmicpc.net/problem/9024)|Two_Pointer| :x: |
 |[1277](https://www.acmicpc.net/problem/1277)|Graph-Thm, Dijkstra| :x: |
+|[9252](https://www.acmicpc.net/problem/9252)|DP| :x: |
 
 
 
