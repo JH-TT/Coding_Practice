@@ -1,0 +1,50 @@
+import heapq
+
+def solution(board):
+    answer = 0
+    # 상하좌우 : 0123
+    for i in range(len(board)):
+        for j in range(len(board[0])):
+            if board[i][j] == "R":
+                start = [i, j]
+    q = []
+    # 해당 좌표에서 상하좌우로 이동했는지 확인하는 visit
+    visit = [[[0, 0, 0, 0] for _ in range(len(board[0]))]for _ in range(len(board))]
+    heapq.heappush(q, (0, start)) # 좌표, 카운트
+    while q:
+        cnt, p = heapq.heappop(q)
+        a, b = p
+        if board[a][b] == "G":
+            return cnt
+        for i in range(4):
+            if visit[a][b][i]:
+                continue
+            nex = move(a, b, i, board)
+            visit[a][b][i] = 1
+            heapq.heappush(q, (cnt+1, nex))
+    
+    return -1
+
+# D를 만날때까지, 없으면 벽 끝으로 이동
+def move(x, y, t, b):
+    if t == 0:
+        while x > 0:
+            if b[x-1][y] == "D":
+                break
+            x -= 1
+    elif t == 1:
+        while x < len(b)-1:
+            if b[x+1][y] == "D":
+                break
+            x += 1
+    elif t == 2:
+        while y > 0:
+            if b[x][y-1] == "D":
+                break
+            y -= 1
+    else:
+        while y < len(b[0])-1:
+            if b[x][y+1] == "D":
+                break
+            y += 1
+    return [x, y]
