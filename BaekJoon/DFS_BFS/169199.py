@@ -1,4 +1,4 @@
-import heapq
+from collections import deque
 
 def solution(board):
     answer = 0
@@ -7,25 +7,23 @@ def solution(board):
         for j in range(len(board[0])):
             if board[i][j] == "R":
                 start = [i, j]
-    q = []
-    # 해당 좌표에서 상하좌우로 이동했는지 확인하는 visit
-    visit = [[[0, 0, 0, 0] for _ in range(len(board[0]))]for _ in range(len(board))]
-    heapq.heappush(q, (0, start)) # 좌표, 카운트
+    q = deque()
+    visit = [[0] * len(board[0]) for _ in range(len(board))]
+    q.append((0, start))
     while q:
-        cnt, p = heapq.heappop(q)
+        cnt, p = q.popleft()
         a, b = p
         if board[a][b] == "G":
             return cnt
         for i in range(4):
-            if visit[a][b][i]:
+            if visit[a][b]:
                 continue
             nex = move(a, b, i, board)
-            visit[a][b][i] = 1
-            heapq.heappush(q, (cnt+1, nex))
+            q.append((cnt+1, nex))
+        visit[a][b] = 1
     
     return -1
 
-# D를 만날때까지, 없으면 벽 끝으로 이동
 def move(x, y, t, b):
     if t == 0:
         while x > 0:
