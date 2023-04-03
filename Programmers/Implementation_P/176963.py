@@ -13,4 +13,4 @@ def solution(name, yearning, photo):
             total += yearn[j]
         answer.append(total)
     
-    return answer 
+    return answer
