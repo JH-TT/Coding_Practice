@@ -25,29 +25,15 @@ def front(t, idx):
     # 시계 방향 : 흰 -> 파 -> 노 -> 초 -> 흰
     # 반시계 방향 : 흰 -> 초 -> 노 -> 파 -> 흰
     if t == "+":
-        white[2-idx][0], blue[0][idx] = blue[0][idx], white[2-idx][0]
-        white[2-idx][0], yellow[idx][2] = yellow[idx][2], white[2-idx][0]
-        white[2-idx][0], green[2][2-idx] = green[2][2-idx], white[2-idx][0]
-
-        white[2-idx][1], blue[1][idx] = blue[1][idx], white[2-idx][1]
-        white[2-idx][1], yellow[idx][1] = yellow[idx][1], white[2-idx][1]
-        white[2-idx][1], green[1][2-idx] = green[1][2-idx], white[2-idx][1]
-
-        white[2-idx][2], blue[2][idx] = blue[2][idx], white[2-idx][2]
-        white[2-idx][2], yellow[idx][0] = yellow[idx][0], white[2-idx][2]
-        white[2-idx][2], green[0][2-idx] = green[0][2-idx], white[2-idx][2]
+        for i in range(3):
+            white[2-idx][i], blue[i][idx] = blue[i][idx], white[2-idx][i]
+            white[2-idx][i], yellow[idx][2-i] = yellow[idx][2-i], white[2-idx][i]
+            white[2-idx][i], green[2-i][2-idx] = green[2-i][2-idx], white[2-idx][i]
     else:
-        white[2-idx][0], green[2][2-idx] = green[2][2-idx], white[2-idx][0]
-        white[2-idx][0], yellow[idx][2] = yellow[idx][2], white[2-idx][0]
-        white[2-idx][0], blue[0][idx] = blue[0][idx], white[2-idx][0]
-
-        white[2-idx][1], green[1][2-idx] = green[1][2-idx], white[2-idx][1]
-        white[2-idx][1], yellow[idx][1] = yellow[idx][1], white[2-idx][1]
-        white[2-idx][1], blue[1][idx] = blue[1][idx], white[2-idx][1]
-
-        white[2-idx][2], green[0][2-idx] = green[0][2-idx], white[2-idx][2]
-        white[2-idx][2], yellow[idx][0] = yellow[idx][0], white[2-idx][2]
-        white[2-idx][2], blue[2][idx] = blue[2][idx], white[2-idx][2]
+        for i in range(3):
+            white[2-idx][i], green[2-i][2-idx] = green[2-i][2-idx], white[2-idx][i]
+            white[2-idx][i], yellow[idx][2-i] = yellow[idx][2-i], white[2-idx][i]
+            white[2-idx][i], blue[i][idx] = blue[i][idx], white[2-idx][i]
 
 def back(t):
     # front의 반대, 인덱스는 2
@@ -60,30 +46,16 @@ def left(t, idx):
     # 시계 방향 : 흰 -> 빨 -> 노 -> 주 -> 흰
     # 반시계 방향 : 흰 -> 주 -> 노 -> 빨 -> 흰
     if t == "+":
-        white[0][idx], red[0][idx] = red[0][idx], white[0][idx]
-        white[0][idx], yellow[0][idx] = yellow[0][idx], white[0][idx]
-        white[0][idx], orange[2][2-idx] = orange[2][2-idx], white[0][idx]
-
-        white[1][idx], red[1][idx] = red[1][idx], white[1][idx]
-        white[1][idx], yellow[1][idx] = yellow[1][idx], white[1][idx]
-        white[1][idx], orange[1][2-idx] = orange[1][2-idx], white[1][idx]
-
-        white[2][idx], red[2][idx] = red[2][idx], white[2][idx]
-        white[2][idx], yellow[2][idx] = yellow[2][idx], white[2][idx]
-        white[2][idx], orange[0][2-idx] = orange[0][2-idx], white[2][idx]
+        for i in range(3):
+            white[i][idx], red[i][idx] = red[i][idx], white[i][idx]
+            white[i][idx], yellow[i][idx] = yellow[i][idx], white[i][idx]
+            white[i][idx], orange[2-i][2-idx] = orange[2-i][2-idx], white[i][idx]
     else:
-        white[0][idx], orange[2][2-idx] = orange[2][2-idx], white[0][idx]
-        white[0][idx], yellow[0][idx] = yellow[0][idx], white[0][idx]
-        white[0][idx], red[0][idx] = red[0][idx], white[0][idx]
-
-        white[1][idx], orange[1][2-idx] = orange[1][2-idx], white[1][idx]
-        white[1][idx], yellow[1][idx] = yellow[1][idx], white[1][idx]
-        white[1][idx], red[1][idx] = red[1][idx], white[1][idx]
-
-        white[2][idx], orange[0][2-idx] = orange[0][2-idx], white[2][idx]
-        white[2][idx], yellow[2][idx] = yellow[2][idx], white[2][idx]
-        white[2][idx], red[2][idx] = red[2][idx], white[2][idx]
-
+        for i in range(3):
+            white[i][idx], orange[2-i][2-idx] = orange[2-i][2-idx], white[i][idx]
+            white[i][idx], yellow[i][idx] = yellow[i][idx], white[i][idx]
+            white[i][idx], red[i][idx] = red[i][idx], white[i][idx]
+            
 def right(t):
     if t == "+":
         left("-", 2)
@@ -157,6 +129,5 @@ for _ in range(int(input())):
                 yellow = counterclock(yellow)
     for w in white:
         print("".join(w))
-
-
+      
 # L과 R, F와 B, U와 D가 서로 반대라서 둘 중에 하나만 구현하고 나머지 하나는 다른 하나를 호출하는 방식으로 하면 됨
