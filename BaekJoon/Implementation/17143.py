@@ -71,3 +71,71 @@ while angler < C:
             arr[move_[0]][move_[1]].append(move_[2:])
 print(res)
 # 움직이는 것만 잘 생각하면 쉽게 구현가능했던 문제 (왜 골1이지...)
+# shark를 크기 기준으로 정렬한 뒤 그냥 덮어씌우는 방식을 사용했는데 이 경우 pypy로 제출해야 통과했다.
+
+# heap을 이용한 풀이(Pypy제출)
+import sys, heapq
+input = sys.stdin.readline
+# 1 : 위, 2 : 아래, 3 : 오른쪽, 4 : 왼쪽
+# 정보 : (r, c), 속력, 이동방향, 크기
+
+def move_shark(s):
+    cnt = s[1]
+    while cnt > 0:
+        if s[2] == 1: # 위
+            m = min(cnt, s[3]-1)
+            cnt -= m
+            s[3] -= m
+            if s[3] == 1:
+                s[2] = 2
+        elif s[2] == 2: # 아래
+            m = min(cnt, R-s[3])
+            cnt -= m
+            s[3] += m
+            if s[3] == R:
+                s[2] = 1
+        elif s[2] == 3: #오른쪽
+            m = min(cnt, C-s[4])
+            cnt -= m
+            s[4] += m
+            if s[4] == C:
+                s[2] = 4
+        else:
+            m = min(cnt, s[4]-1)
+            cnt -= m
+            s[4] -= m
+            if s[4] == 1:
+                s[2] = 3
+    return s
+  
+R, C, M = map(int, input().split())
+arr = [[[] for _ in range(C+1)] for _ in range(R+1)]
+
+for _ in range(M):
+    r, c, s, d, z = map(int, input().split())
+    arr[r][c].append([z, s, d])
+
+angler = 0
+res = 0
+while angler < C:
+    # 낚시꾼이 움직인다.
+    angler += 1
+    # 상어를 잡는다.
+    for i in range(1, R+1):
+        if len(arr[i][angler]) > 0:
+            catch = arr[i][angler].pop()
+            res += catch[0]
+            break
+    # 상어가 움직인다. 
+    # 1. 상어들을 회수
+    # 2. 상어들을 움직인 후 arr에 넣는다.
+    # + 만약 이미 있는 곳에 넣는 경우는 둘 중에 비교해서 잡아먹도록 한다. 
+    sharks = []
+    for i in range(1, R+1):
+        for j in range(1, C+1):
+            if len(arr[i][j]) > 0:
+                heapq.heappush(sharks, arr[i][j].pop() + [i, j])
+    while sharks:
+        move_ = move_shark(heapq.heappop(sharks)) # 상어를 이동시킨다.
+        arr[move_[3]][move_[4]] = [move_[:3]]
+print(res)
