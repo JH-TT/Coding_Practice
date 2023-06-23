@@ -14,7 +14,7 @@
 
 
 ## 프로그래머스 다시풀어볼 문제들
-|문제번호|알고리즘종류|다시풀이확인|
-|:-:|:-:|:-:|
+|문제번호|알고리즘종류|다시풀이확인|비슷한 문제|
+|:-:|:-:|:-:|:-:|
 |[150365](https://school.programmers.co.kr/learn/courses/30/lessons/150365)|Ad_Hoc| :x: |
-|[131703](https://school.programmers.co.kr/learn/courses/30/lessons/131703)|Greedy| :x: |
+|[131703](https://school.programmers.co.kr/learn/courses/30/lessons/131703)|Greedy| :x: |[131702](https://school.programmers.co.kr/learn/courses/30/lessons/131702)|
