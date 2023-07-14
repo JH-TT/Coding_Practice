@@ -18,3 +18,4 @@
 |:-:|:-:|:-:|:-:|
 |[150365](https://school.programmers.co.kr/learn/courses/30/lessons/150365)|Ad_Hoc| :x: |
 |[131703](https://school.programmers.co.kr/learn/courses/30/lessons/131703)|Greedy| :x: |[131702](https://school.programmers.co.kr/learn/courses/30/lessons/131702)|
+|[68646](https://school.programmers.co.kr/learn/courses/30/lessons/68646)|Ad_Hoc| :x: |
