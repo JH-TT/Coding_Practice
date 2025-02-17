@@ -1,0 +1,5 @@
+*.sh
+.gitignore
+*.log
+*.tmp
+*.swp
