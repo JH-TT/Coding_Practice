@@ -1,2 +1,2 @@
-run = ""
+run = "bash watch.sh"
 entrypoint = "main.sh"
