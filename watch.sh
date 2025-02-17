@@ -3,7 +3,7 @@
 WATCH_DIR="./"  # 감시할 디렉토리
 
 # 제외할 파일/디렉토리 패턴 (정규 표현식 사용)
-EXCLUDE_PATTERN="(\.git/|watch\.log|node_modules/|.*\.tmp)"
+EXCLUDE_PATTERN="(\.git/|watch\.log|node_modules/|.*\.tmp|.*\.sh)"
 
 while inotifywait -r -e create,modify --exclude "$EXCLUDE_PATTERN" "$WATCH_DIR"; do
     git add .
