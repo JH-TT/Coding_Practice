@@ -4,4 +4,21 @@
 #        10으로 나눈 나머지가 0이다. 만약 mod 10의 값이 R이면 10-R, 20-R, 30-R(이 경우는 모든 R에 대해서는 아님.)만큼 필요하다는 의미
 
 seq = list(input())
-print(seq)
+total = 0
+
+star_weight = 0
+
+for i in range(len(seq)):
+  if not seq[i].isdigit():
+    star_weight = 1 if i % 2 == 0 else 3
+    continue
+  if i % 2 == 0:
+      total += int(seq[i]) * 1
+  else:
+      total += int(seq[i]) * 3
+
+print(total)
+for i in range(10):
+  if (total + i * star_weight) % 10 == 0:
+    print(i)
+    break
