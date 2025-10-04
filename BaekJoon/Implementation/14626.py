@@ -17,7 +17,6 @@ for i in range(len(seq)):
   else:
       total += int(seq[i]) * 3
 
-print(total)
 for i in range(10):
   if (total + i * star_weight) % 10 == 0:
     print(i)
