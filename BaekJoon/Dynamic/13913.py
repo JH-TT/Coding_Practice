@@ -40,7 +40,16 @@ while q:
         q.append(nxt)
 
 res = []
-dfs(k)
+# dfs(k)
+
+# 재귀는 터질 가능성이 있으므로 반복문으로 처리해보자
+cur = k
+while True:
+    res.append(cur)
+    if parent[cur] == cur:
+        break
+    cur = parent[cur]
+# ============= 이렇게 하면 재귀깊이가 터질 위험도 없다.
 print(len(res) - 1)
 res.reverse()
 print(*res)
