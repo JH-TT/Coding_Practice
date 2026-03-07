@@ -103,4 +103,14 @@ public class Main {
 1. 불필요한 files 배열 제거 - 누적합 계산 후 다시 사용되지 않음
 2. System.out.println() → System.out.print()로 변경 - 불필요한 이중 개행 방지
 3. 주석 스타일 통일 - "//길이별로" → "// 길이별로" (공백 추가)
+
+문제 접근 방법:
+- 알고리즘: 구간 DP (Dynamic Programming)
+- 핵심 아이디어:
+  * dp[i][j] = i번째부터 j번째 파일까지 합치는 최소 비용
+  * 구간 [i, j]를 중간 지점 k로 분할하여 [i, k]와 [k+1, j]로 나누기
+  * dp[i][j] = min(dp[i][k] + dp[k+1][j] + sum(i~j)) for all k
+  * 작은 구간부터 계산 (bottom-up): 길이 1 → 2 → ... → n
+- 최적화: 누적 합 배열을 사용하여 구간 합을 O(1)에 계산
+- 시간복잡도: O(K^3) - K개 파일, 각 구간마다 K번 탐색
 */
